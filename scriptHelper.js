@@ -48,8 +48,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     }
     let validInputsKey = ['pilot', 'copilot', 'fuelLevel', 'cargoLevel']
 
-
-    let proceed = true
     // input validation
 
     for (i=0; i< fieldLabels.length; i++){
@@ -61,12 +59,11 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             proceed = false;
             return "empty"
         }else if (validated !== validInputs[key]){
-            proceed = false;
+
             return "invalid"
         }
     }
 
-    if (proceed === true){
         list.style.visibility = "visible";
         pilotName.innerHTML = `Pilot ${pilot.value} is ready for launch`
         copilotName.innerHTML = `Co-pilot ${copilot.value} is ready for launch`
@@ -90,7 +87,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
                 cargoStatus.innerHTML = "Cargo mass low enough for launch"
         }    
 
-    }
+    
 
 
 }
