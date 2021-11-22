@@ -7,6 +7,7 @@ window.addEventListener("load", function() {
     let fuelLevel= document.querySelector("input[name=fuelLevel]"); 
     let cargoLevel= document.querySelector("input[name=cargoMass]");
     let list = document.getElementById("faultyItems")
+    
 
 
     form.addEventListener("submit", (event) => {
