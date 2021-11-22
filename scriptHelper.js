@@ -55,7 +55,9 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     for (i=0; i< fieldLabels.length; i++){
         let key = validInputsKey[i]
         let validated = validateInput(fieldLabels[i].value)
-        if (validated === "Empty"){
+        if(validated === validInputs[key]){
+            continue;
+        } else if(validated === "Empty"){
             alert("All fields are required!");
             proceed = false;
             break;
