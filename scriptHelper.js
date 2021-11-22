@@ -64,28 +64,27 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let fuel = Number(fuelLevel.value);
     let cargo = Number(cargoLevel.value);
 
-    pilotName.innerHTML = `Pilot ${pilot.value} Ready`
-    copilotName.innerHTML = `Co-pilot ${copilot.value} Ready`
+    pilotName.innerHTML = `Pilot ${pilot.value} is ready for launch`
+    copilotName.innerHTML = `Co-pilot ${copilot.value} is ready for launch`
 
     if (fuel < 10000 || cargo > 10000){
-        launchStatus.style.color = "red"
+        launchStatus.style.color = "rgb(199, 37, 78)"
         launchStatus.innerHTML = "Shuttle Not Ready for Launch"
-        
-        if (fuel < 10000){
-        fuelStatus.innerHTML = "Fuel level too low for launch."
-        } 
-        if (cargo > 10000){
-        cargoStatus.innerHTML = "Cargo Mass is too high for launch"    
-        }
     } else {
-        launchStatus.style.color = "green"
+        launchStatus.style.color = "rgb(65, 159, 106)"
         launchStatus.innerHTML = "Shuttle Ready for Launch"
+    }
 
-        if (fuelStatus.innerHTML === "Fuel level too low for launch." || cargoStatus.innerHTML === "Cargo Mass is too high for launch"){
+    if (fuel < 10000){
+        fuelStatus.innerHTML = "Fuel level too low for launch."
+        } else{
             fuelStatus.innerHTML = "Fuel level high enough for launch"
+        }
+        if (cargo > 10000){
+        cargoStatus.innerHTML = "Cargo mass too heavy for launch"    
+        } else {
             cargoStatus.innerHTML = "Cargo mass low enough for launch"
         }
-    }
 
     
 
