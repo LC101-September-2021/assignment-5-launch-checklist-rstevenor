@@ -18,11 +18,12 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
 //Checks that values input are not empty and are or are not a number.
 function validateInput(testInput) {
+    let numberInput = Number(testInput)
     if (testInput === ""){
         return "Empty";
-    } else if (Number(testInput).isNaN()){
+    } else if (isNaN(numberInput)){
         return "Not a Number";
-    } else if (!(Number(testInput).isNaN())){
+    } else{
         return "Is a Number";
     }
  }
@@ -34,26 +35,31 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         pilot: "Not a Number",
         copilot: "Not a Number",
         fuelLevel: "Is a Number",
-        cargoLevel: "is a Number"
+        cargoLevel: "Is a Number"
     }
+    let validInputsKey = ['pilot', 'copilot', 'fuelLevel', 'cargoLevel']
 
     for (i=0; i< fieldLabels.length; i++){
-        if (validateInput(fieldLabels[i].value) === "Empty"){
+        let key = validInputsKey[i]
+        let validated = validateInput(fieldLabels[i].value)
+        if (validated === "Empty"){
             alert("All fields are required!");
             event.preventDefault();
             break;
-        }else if (validateInput() !== validInputs[fieldLabels[i]]){
-            alert("Make sure to enter valid information for each field!")
-            event.preventDefault()
+        }else if (validated !== validInputs[key]){
+            alert("Make sure to enter valid information for each field!");
+            event.preventDefault();
+            break;
         }
     }
+
    
 }
 
 async function myFetch() {
     let planetsReturned;
 
-    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+    planetsReturned = await fetch().then( function(response) {
         });
 
     return planetsReturned;
