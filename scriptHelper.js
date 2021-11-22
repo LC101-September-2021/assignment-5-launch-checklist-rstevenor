@@ -53,8 +53,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             list.style.visibility = "hidden";
             event.preventDefault();
             break;
-        }else{
-            continue
         }
     }
     
@@ -106,9 +104,9 @@ async function myFetch() {
     return planetsReturned;
 }
 
-// choose a number between 1 and the length of the collection of pla
+// choose a number between 1 and 6
 function pickPlanet(planets) {
-    let selection = Math.floor((Math.random() * planets.length) + 1);
+    let selection = Math.floor((Math.random() * 6) + 1);
 
     return planets[selection]
     

@@ -5,6 +5,8 @@ window.addEventListener("load", function() {
     let fuelLevel= document.querySelector("input[name=fuelLevel]"); 
     let cargoLevel= document.querySelector("input[name=cargoMass]");
     let list = document.getElementById("faultyItems")
+    list.style.visibility = "hidden";
+    
     
 
 // Handles all user input data.
@@ -19,7 +21,6 @@ window.addEventListener("load", function() {
        listedPlanets = result;
    }).then(function () {
        let planet = pickPlanet(listedPlanets)
-       console.log(planet.image)
         addDestinationInfo(document, planet.name, planet.diameter, planet.star, planet.distance, planet.moons, planet.image);
    })
    
