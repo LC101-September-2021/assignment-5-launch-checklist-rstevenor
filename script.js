@@ -11,7 +11,8 @@ window.addEventListener("load", function() {
 
 // Handles all user input data.
     form.addEventListener("submit", (event) => {
-        formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel,event)
+        formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel)
+        event.preventDefault()
         });
 
 // Handles all mission details.
