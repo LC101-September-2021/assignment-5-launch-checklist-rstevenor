@@ -31,7 +31,6 @@ function validateInput(testInput) {
 
  // Validates and utilizes user input data to determine shuttle readiness.
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    let window = global.window
     let fieldLabels = [pilot, copilot, fuelLevel, cargoLevel]
     let validInputs = {
         pilot: "Not a Number",
