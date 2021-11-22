@@ -1,4 +1,5 @@
 window.addEventListener("load", function() {
+    let document = window.document
     let form = document.querySelector("form");
     let pilot = document.querySelector("input[name=pilotName]"); 
     let copilot= document.querySelector("input[name=copilotName]"); 

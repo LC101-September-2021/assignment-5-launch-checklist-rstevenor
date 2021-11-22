@@ -47,10 +47,10 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         if (validated === validInputs[key]){
             continue;
         }else if(validated === "Empty"){
-            alert("All fields are required!");
+            document.alert("All fields are required!");
             return;
         }else if (validated !== validInputs[key]){
-            alert("Make sure to enter valid information for each field!");
+            document.alert("Make sure to enter valid information for each field!");
             return;
         }
     }
