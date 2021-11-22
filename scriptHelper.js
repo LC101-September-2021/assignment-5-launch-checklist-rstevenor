@@ -1,19 +1,20 @@
 // Write your helper functions here!
 require('isomorphic-fetch');
 
+//Adds planetary details to missionTarget.
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-   // Here is the HTML formatting for our mission target div.
-   /*
+   let missionTarget = document.getElementById("missionTarget")
+   
+   missionTarget.innerHTML = `
                 <h2>Mission Destination</h2>
                 <ol>
-                    <li>Name: </li>
-                    <li>Diameter: </li>
+                    <li>Name: ${name}</li>
+                    <li>Diameter: ${diameter}</li>
                     <li>Star: ${star}</li>
-                    <li>Distance from Earth: </li>
-                    <li>Number of Moons: </li>
+                    <li>Distance from Earth: ${distance} </li>
+                    <li>Number of Moons: ${moons}</li>
                 </ol>
-                <img src="">
-   */
+                <img src="${imageUrl}">`
 }
 
 //Checks that values input are not empty and are or are not a number.
@@ -28,7 +29,7 @@ function validateInput(testInput) {
     }
  }
 
- // checks form fields for blanks and correct information.
+ // Validates and utilizes user input data to determine shuttle readiness.
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let fieldLabels = [pilot, copilot, fuelLevel, cargoLevel]
     let validInputs = {
@@ -43,11 +44,13 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         let key = validInputsKey[i]
         let validated = validateInput(fieldLabels[i].value)
         if (validated === "Empty"){
-            alert("All fields are required!");
+            window.alert("All fields are required!");
+            list.style.visibility = "hidden";
             event.preventDefault();
             break;
         }else if (validated !== validInputs[key]){
-            alert("Make sure to enter valid information for each field!");
+            window.alert("Make sure to enter valid information for each field!");
+            list.style.visibility = "hidden";
             event.preventDefault();
             break;
         }
@@ -86,23 +89,27 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             cargoStatus.innerHTML = "Cargo mass low enough for launch"
         }
 
-    
-
-
 
     event.preventDefault()
 }
 
+// retrieve planet list.
 async function myFetch() {
     let planetsReturned;
 
-    planetsReturned = await fetch().then( function(response) {
-        });
+    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+      return response.json()
+    });
 
     return planetsReturned;
 }
 
+// choose a number between 1 and the length of the collection of planets
 function pickPlanet(planets) {
+    let selection = Math.floor((Math.random() * planets.length) + 1);
+
+    return planets[selection]
+    
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;
