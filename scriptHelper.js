@@ -31,6 +31,7 @@ function validateInput(testInput) {
 
  // Validates and utilizes user input data to determine shuttle readiness.
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+    let window = global.window
     let fieldLabels = [pilot, copilot, fuelLevel, cargoLevel]
     let validInputs = {
         pilot: "Not a Number",
@@ -39,17 +40,18 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         cargoLevel: "Is a Number"
     }
     let validInputsKey = ['pilot', 'copilot', 'fuelLevel', 'cargoLevel']
+    
 
     for (i=0; i< fieldLabels.length; i++){
         let key = validInputsKey[i]
         let validated = validateInput(fieldLabels[i].value)
         if (validated === "Empty"){
-            alert("All fields are required!");
+            window.alert("All fields are required!");
             list.style.visibility = "hidden";
             event.preventDefault();
             break;
         }else if (validated !== validInputs[key]){
-            alert("Make sure to enter valid information for each field!");
+            window.alert("Make sure to enter valid information for each field!");
             list.style.visibility = "hidden";
             event.preventDefault();
             break;
