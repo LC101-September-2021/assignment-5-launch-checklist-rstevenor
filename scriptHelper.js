@@ -39,21 +39,21 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         cargoLevel: "Is a Number"
     }
     let validInputsKey = ['pilot', 'copilot', 'fuelLevel', 'cargoLevel']
-    
 
+    // input validation
     for (i=0; i< fieldLabels.length; i++){
         let key = validInputsKey[i]
         let validated = validateInput(fieldLabels[i].value)
         if (validated === "Empty"){
-            global.window.alert("All fields are required!");
+            // alert("All fields are required!");
             list.style.visibility = "hidden";
             event.preventDefault();
             break;
         }else if (validated !== validInputs[key]){
-            global.window.alert("Make sure to enter valid information for each field!");
+            // alert("Make sure to enter valid information for each field!");
             list.style.visibility = "hidden";
             event.preventDefault();
-            break;
+            break;        
         }
     }
     
