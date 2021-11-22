@@ -45,12 +45,12 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel, e
         let key = validInputsKey[i]
         let validated = validateInput(fieldLabels[i].value)
         if (validated === "Empty"){
-            alert("All fields are required!");
+            // alert("All fields are required!");
             list.style.visibility = "hidden";
             event.preventDefault();
             return;
         }else if (validated !== validInputs[key]){
-            alert("Make sure to enter valid information for each field!");
+            // alert("Make sure to enter valid information for each field!");
             list.style.visibility = "hidden";
             event.preventDefault();
             return;       
