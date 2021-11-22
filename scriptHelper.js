@@ -44,15 +44,17 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         let key = validInputsKey[i]
         let validated = validateInput(fieldLabels[i].value)
         if (validated === "Empty"){
-            window.alert("All fields are required!");
+            alert("All fields are required!");
             list.style.visibility = "hidden";
             event.preventDefault();
             break;
         }else if (validated !== validInputs[key]){
-            window.alert("Make sure to enter valid information for each field!");
+            alert("Make sure to enter valid information for each field!");
             list.style.visibility = "hidden";
             event.preventDefault();
             break;
+        }else{
+            continue
         }
     }
     
@@ -80,14 +82,14 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
     if (fuel < 10000){
         fuelStatus.innerHTML = "Fuel level too low for launch."
-        } else{
+    } else{
             fuelStatus.innerHTML = "Fuel level high enough for launch"
-        }
-        if (cargo > 10000){
+    }
+    if (cargo > 10000){
         cargoStatus.innerHTML = "Cargo mass too heavy for launch"    
-        } else {
+    } else {
             cargoStatus.innerHTML = "Cargo mass low enough for launch"
-        }
+    }
 
 
     event.preventDefault()
@@ -104,7 +106,7 @@ async function myFetch() {
     return planetsReturned;
 }
 
-// choose a number between 1 and the length of the collection of planets
+// choose a number between 1 and the length of the collection of pla
 function pickPlanet(planets) {
     let selection = Math.floor((Math.random() * planets.length) + 1);
 
