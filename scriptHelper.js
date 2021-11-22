@@ -58,13 +58,11 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         if(validated === validInputs[key]){
             continue;
         } else if(validated === "Empty"){
-            alert("All fields are required!");
             proceed = false;
-            break;
+            return "empty"
         }else if (validated !== validInputs[key]){
-            alert("Make sure to enter valid information for each field!");
             proceed = false;
-            break;
+            return "invalid"
         }
     }
 

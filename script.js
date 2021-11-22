@@ -11,7 +11,14 @@ window.addEventListener("load", function() {
 
 // Handles all user input data.
     form.addEventListener("submit", (event) => {
-        formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel)
+        let submission = formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel)
+        if ( submission === "empty"){
+            alert("All fields must be filled!")
+        } else if ( submission === "invalid"){
+            alert("Make sure to enter valid information for each field!");
+        }else {
+            formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel)
+        }
         event.preventDefault()
     });
 
