@@ -13,7 +13,7 @@ window.addEventListener("load", function() {
     form.addEventListener("submit", (event) => {
         formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel)
         event.preventDefault()
-        });
+    });
 
 // Handles all mission details.
    let listedPlanets; 
