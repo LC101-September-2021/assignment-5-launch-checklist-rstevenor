@@ -29,11 +29,6 @@ function validateInput(testInput) {
     }
  }
 
- function alertMessage(messageObject) {
-    alert(messageObject);
-    return true;
-    }
-
   // Validates and utilizes user input data to determine shuttle readiness.
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let fieldLabels = [pilot, copilot, fuelLevel, cargoLevel]
@@ -52,10 +47,10 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         if (validated === validInputs[key]){
             continue;
         }else if(validated === "Empty"){
-            alertMessage("All fields are required!");
+            alert("All fields are required!");
             return;
         }else if (validated !== validInputs[key]){
-            alertMessage("Make sure to enter valid information for each field!");
+            alert("Make sure to enter valid information for each field!");
             return;
         }
     }
