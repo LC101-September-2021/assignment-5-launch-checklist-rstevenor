@@ -62,7 +62,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
                 return;
             }
             validator = true
-        }else{
+        }
+     } else {
         
         let launchStatus = document.getElementById("launchStatus");
         let pilotName = document.getElementById("pilotStatus"); 
