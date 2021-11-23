@@ -1,3 +1,5 @@
+const { ConsoleReporter } = require('jasmine');
+
 // Write your helper functions here!
 require('isomorphic-fetch');
 
@@ -31,9 +33,6 @@ function validateInput(testInput) {
 
   // Validates and utilizes user input data to determine shuttle readiness.
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-
-    let form = document.querySelector("form");
-    form.addEventListener("submit", (event) => {
          
         let fieldLabels = [pilot, copilot, fuelLevel, cargoLevel]
         let validInputs = {
@@ -49,15 +48,14 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             for (let i=0; i< fieldLabels.length; i++){
             let key = validInputsKey[i]
             let validated = validateInput(fieldLabels[i])
+            console.log(fieldLabels[i], validated)
             if (validated === validInputs[key]){
                 continue;
-            }else if(validated === "Empty"){
+            }else if (validated === "Empty") {
                 alert("All fields are required!");
-                event.preventDefault()
                 return;
             }else if (validated !== validInputs[key]){
                 alert("Make sure to enter valid information for each field!");
-                event.preventDefault()
                 return;
             }
            
@@ -70,34 +68,43 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         let fuelStatus = document.getElementById("fuelStatus");
         let cargoStatus = document.getElementById( "cargoStatus");
     
-        list.style.visibility = "visible";
+        
     
         let fuel = Number(fuelLevel);
         let cargo = Number(cargoLevel);
     
-        pilotName.innerHTML = `Pilot ${pilot.value} is ready for launch`
-        copilotName.innerHTML = `Co-pilot ${copilot.value} is ready for launch`
+        pilotName.textContent = `Pilot ${pilot} is ready for launch`
+        copilotName.textContent = `Co-pilot ${copilot} is ready for launch`
+        console.log(copilotName.textContent)
+
     
         if (fuel < 10000 || cargo > 10000){
+            list.style.visibility = "visible";
             launchStatus.style.color = "rgb(199, 37, 78)"
-            launchStatus.innerHTML = "Shuttle Not Ready for Launch"
+            launchStatus.textContent = "Shuttle Not Ready for Launch"
+            console.log()
         } else {
+            list.style.visibility = "visible";
             launchStatus.style.color = "rgb(65, 159, 106)"
-            launchStatus.innerHTML = "Shuttle Ready for Launch"
+            launchStatus.textContent = "Shuttle Ready for Launch"
+        
         }
     
         if (fuel < 10000){
-            fuelStatus.innerHTML = "Fuel level too low for launch."
+            fuelStatus.textContent = "Fuel level too low for launch."
+            console.log("fuel low")
         } else{
-                fuelStatus.innerHTML = "Fuel level high enough for launch"
+            fuelStatus.textContent = "Fuel level high enough for launch"
+            console.log("fuel good")
         }
         if (cargo > 10000){
-            cargoStatus.innerHTML = "Cargo mass too heavy for launch"    
+            cargoStatus.textContent = "Cargo mass too heavy for launch"    
+            console.log("cargo heavy")
         } else {
-            cargoStatus.innerHTML = "Cargo mass low enough for launch"
+            cargoStatus.textContent = "Cargo mass low enough for launch"
+            console.log("cargo good")
         }
-        event.preventDefault()
-    });
+        
 }
 
 // retrieve planet list.
