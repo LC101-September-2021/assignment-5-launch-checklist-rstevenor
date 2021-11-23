@@ -46,7 +46,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             for (let i=0; i< fieldLabels.length; i++){
             let key = validInputsKey[i]
             let validated = validateInput(fieldLabels[i])
-            console.log(fieldLabels[i], validated)
             if (validated === validInputs[key]){
                 continue;
             }else if (validated === "Empty") {
@@ -59,7 +58,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
            
         }
      
-        
+        //Access text fields to provides updates
         let launchStatus = document.getElementById("launchStatus");
         let pilotName = document.getElementById("pilotStatus"); 
         let copilotName = document.getElementById("copilotStatus");
@@ -67,15 +66,16 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         let cargoStatus = document.getElementById( "cargoStatus");
     
         
-    
+        //converts fuel and cargo inputs to numbers for later math.
         let fuel = Number(fuelLevel);
         let cargo = Number(cargoLevel);
     
+        //Updates pilot and copilot information in shuttle status
         pilotName.textContent = `Pilot ${pilot} is ready for launch`
         copilotName.textContent = `Co-pilot ${copilot} is ready for launch`
 
 
-    
+        //Changes h2 to reflect status whether or not shuttle is ready to launch.
         if (fuel < 10000 || cargo > 10000){
             list.style.visibility = "visible";
             launchStatus.style.color = "rgb(199, 37, 78)";
@@ -86,6 +86,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             launchStatus.textContent = "Shuttle is Ready for Launch"
         
         }
+
+        //updates fuel and cargo fields to reflect if items are faulty
     
         if (fuel < 10000){
             fuelStatus.textContent = "Fuel level too low for launch"
@@ -111,7 +113,7 @@ async function myFetch() {
     return planetsReturned;
 }
 
-// choose a number between 1 and 6
+// choose a random planet.
 function pickPlanet(planets) {
     let selection = Math.floor((Math.random() * planets.length) + 1);
 
