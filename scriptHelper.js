@@ -31,9 +31,7 @@ function validateInput(testInput) {
 
   // Validates and utilizes user input data to determine shuttle readiness.
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    let form = document.querySelector("form");
-    form.addEventListener("submit", (event) => {
-        
+         
         let fieldLabels = [pilot, copilot, fuelLevel, cargoLevel]
         let validInputs = {
             pilot: "Not a Number",
@@ -44,7 +42,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         let validInputsKey = ['pilot', 'copilot', 'fuelLevel', 'cargoLevel']
     
         // input validation
-        for (i=0; i< fieldLabels.length; i++){
+        for (let i=0; i< fieldLabels.length; i++){
             let key = validInputsKey[i]
             let validated = validateInput(fieldLabels[i].value)
             if (validated === validInputs[key]){
@@ -88,12 +86,9 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         if (cargo > 10000){
             cargoStatus.innerHTML = "Cargo mass too heavy for launch"    
         } else {
-                cargoStatus.innerHTML = "Cargo mass low enough for launch"
+            cargoStatus.innerHTML = "Cargo mass low enough for launch"
         }
     
-    
-        event.preventDefault()
-    });
 }
 
 // retrieve planet list.
@@ -109,7 +104,7 @@ async function myFetch() {
 
 // choose a number between 1 and 6
 function pickPlanet(planets) {
-    let selection = Math.floor((Math.random() * 6) + 1);
+    let selection = Math.floor((Math.random() * planets.length) + 1);
 
     return planets[selection]
     
