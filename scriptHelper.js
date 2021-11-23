@@ -79,11 +79,11 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         if (fuel < 10000 || cargo > 10000){
             list.style.visibility = "visible";
             launchStatus.style.color = "rgb(199, 37, 78)";
-            launchStatus.textContent = "Shuttle is Ready for Launch";
+            launchStatus.textContent = "Shuttle Not Ready for Launch";
         } else {
             list.style.visibility = "visible";
             launchStatus.style.color = "rgb(65, 159, 106)"
-            launchStatus.textContent = "Shuttle Ready for Launch"
+            launchStatus.textContent = "Shuttle is Ready for Launch"
         
         }
     
