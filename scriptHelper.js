@@ -31,6 +31,9 @@ function validateInput(testInput) {
 
   // Validates and utilizes user input data to determine shuttle readiness.
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+
+    let form = document.querySelector("form");
+    form.addEventListener("submit", (event) => {
          
         let fieldLabels = [pilot, copilot, fuelLevel, cargoLevel]
         let validInputs = {
@@ -49,9 +52,11 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
                 continue;
             }else if(validated === "Empty"){
                 alert("All fields are required!");
+                event.preventDefault()
                 return;
             }else if (validated !== validInputs[key]){
                 alert("Make sure to enter valid information for each field!");
+                event.preventDefault()
                 return;
             }
         }
@@ -88,7 +93,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         } else {
             cargoStatus.innerHTML = "Cargo mass low enough for launch"
         }
-    
+        event.preventDefault()
+    });
 }
 
 // retrieve planet list.

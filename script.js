@@ -11,14 +11,12 @@ window.addEventListener("load", function() {
 
 // Handles all user input data.
     
-    let form = document.querySelector("form");
-    form.addEventListener("submit", (event) => {
+    
         
         formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
        
     
-        event.preventDefault()
-    });
+        
 
 // Handles all mission details.
    let listedPlanets; 
