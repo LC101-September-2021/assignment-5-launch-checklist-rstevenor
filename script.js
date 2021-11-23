@@ -5,7 +5,7 @@ window.addEventListener("load", function() {
     let fuelLevel= document.querySelector("input[name=fuelLevel]"); 
     let cargoLevel= document.querySelector("input[name=cargoMass]").value;
     let list = document.getElementById("faultyItems")
-    
+    list.style.visibility = "hidden";
     
     
 

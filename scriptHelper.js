@@ -72,8 +72,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     
         list.style.visibility = "visible";
     
-        let fuel = Number(fuelLevel.value);
-        let cargo = Number(cargoLevel.value);
+        let fuel = Number(fuelLevel);
+        let cargo = Number(cargoLevel);
     
         pilotName.innerHTML = `Pilot ${pilot.value} is ready for launch`
         copilotName.innerHTML = `Co-pilot ${copilot.value} is ready for launch`
