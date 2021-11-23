@@ -1,11 +1,11 @@
 window.addEventListener("load", function() {
     let document = window.document
-    let pilot = document.querySelector("input[name=pilotName]"); 
-    let copilot= document.querySelector("input[name=copilotName]"); 
+    let pilot = document.querySelector("input[name=pilotName]").value; 
+    let copilot= document.querySelector("input[name=copilotName]").value; 
     let fuelLevel= document.querySelector("input[name=fuelLevel]"); 
-    let cargoLevel= document.querySelector("input[name=cargoMass]");
+    let cargoLevel= document.querySelector("input[name=cargoMass]").value;
     let list = document.getElementById("faultyItems")
-    list.style.visibility = "hidden";
+    
     
     
 

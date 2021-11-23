@@ -44,12 +44,11 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         }
         let validInputsKey = ['pilot', 'copilot', 'fuelLevel', 'cargoLevel']
         
-        let validator = false
         // input validation
-        if (validator = false){
+        
             for (let i=0; i< fieldLabels.length; i++){
             let key = validInputsKey[i]
-            let validated = validateInput(fieldLabels[i].value)
+            let validated = validateInput(fieldLabels[i])
             if (validated === validInputs[key]){
                 continue;
             }else if(validated === "Empty"){
@@ -61,9 +60,9 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
                 event.preventDefault()
                 return;
             }
-            validator = true
+           
         }
-     } else {
+     
         
         let launchStatus = document.getElementById("launchStatus");
         let pilotName = document.getElementById("pilotStatus"); 
@@ -97,7 +96,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         } else {
             cargoStatus.innerHTML = "Cargo mass low enough for launch"
         }
-    }
         event.preventDefault()
     });
 }
