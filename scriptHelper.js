@@ -19,8 +19,9 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
 //Checks that values input are not empty and are or are not a number.
 function validateInput(testInput) {
-    let numberInput = Number(testInput)
-    if (testInput === ""){
+    let input = testInput.trim();
+    let numberInput = Number(input)
+    if (input === ""){
         return "Empty";
     } else if (isNaN(numberInput)){
         return "Not a Number";
@@ -45,7 +46,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         
             for (let i=0; i< fieldLabels.length; i++){
             let key = validInputsKey[i];
-            let validated = validateInput(fieldLabels[i].trim());
+            let validated = validateInput(fieldLabels[i]);
             if (validated === validInputs[key]){
                 continue;
             }else if (validated === "Empty") {
