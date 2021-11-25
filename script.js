@@ -22,7 +22,7 @@ form.addEventListener("submit", (event) => {
    listedPlanetsResponse.then(function (result) {
        listedPlanets = result;
    }).then(function () {
-       let planet = pickPlanet(listedPlanets)
+       let planet = pickPlanet(listedPlanets);
         addDestinationInfo(document, planet.name, planet.diameter, planet.star, planet.distance, planet.moons, planet.image);
    })
    

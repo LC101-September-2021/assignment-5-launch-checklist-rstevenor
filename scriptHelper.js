@@ -3,7 +3,7 @@ require('isomorphic-fetch');
 
 //Adds planetary details to missionTarget.
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-   let missionTarget = document.getElementById("missionTarget")
+   let missionTarget = document.getElementById("missionTarget");
    
    missionTarget.innerHTML = `
                 <h2>Mission Destination</h2>
@@ -14,7 +14,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                     <li>Distance from Earth: ${distance} </li>
                     <li>Number of Moons: ${moons}</li>
                 </ol>
-                <img src="${imageUrl}">`
+                <img src="${imageUrl}">`;
 }
 
 //Checks that values input are not empty and are or are not a number.
@@ -32,20 +32,20 @@ function validateInput(testInput) {
   // Validates and utilizes user input data to determine shuttle readiness.
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
          
-        let fieldLabels = [pilot, copilot, fuelLevel, cargoLevel]
+        let fieldLabels = [pilot, copilot, fuelLevel, cargoLevel];
         let validInputs = {
             pilot: "Not a Number",
             copilot: "Not a Number",
             fuelLevel: "Is a Number",
             cargoLevel: "Is a Number"
-        }
-        let validInputsKey = ['pilot', 'copilot', 'fuelLevel', 'cargoLevel']
+        };
+        let validInputsKey = ['pilot', 'copilot', 'fuelLevel', 'cargoLevel'];
         
         // input validation
         
             for (let i=0; i< fieldLabels.length; i++){
-            let key = validInputsKey[i]
-            let validated = validateInput(fieldLabels[i])
+            let key = validInputsKey[i];
+            let validated = validateInput(fieldLabels[i].trim());
             if (validated === validInputs[key]){
                 continue;
             }else if (validated === "Empty") {
@@ -71,8 +71,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         let cargo = Number(cargoLevel);
     
         //Updates pilot and copilot information in shuttle status
-        pilotName.textContent = `Pilot ${pilot} is ready for launch`
-        copilotName.textContent = `Co-pilot ${copilot} is ready for launch`
+        pilotName.textContent = `Pilot ${pilot} is ready for launch`;
+        copilotName.textContent = `Co-pilot ${copilot} is ready for launch`;
 
 
         //Changes h2 to reflect status whether or not shuttle is ready to launch.
@@ -90,15 +90,15 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         //updates fuel and cargo fields to reflect if items are faulty
     
         if (fuel < 10000){
-            fuelStatus.textContent = "Fuel level too low for launch"
+            fuelStatus.textContent = "Fuel level too low for launch";
         } else{
-            fuelStatus.textContent = "Fuel level high enough for launch"
-        }
+            fuelStatus.textContent = "Fuel level high enough for launch";
+        };
         if (cargo > 10000){
-            cargoStatus.textContent = "Cargo mass too heavy for launch"  
+            cargoStatus.textContent = "Cargo mass too heavy for launch" ; 
         } else {
-            cargoStatus.textContent = "Cargo mass low enough for launch"
-        }
+            cargoStatus.textContent = "Cargo mass low enough for launch";
+        };
         
 }
 
@@ -107,7 +107,7 @@ async function myFetch() {
     let planetsReturned;
 
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
-      return response.json()
+      return response.json();
     });
 
     return planetsReturned;
@@ -117,7 +117,7 @@ async function myFetch() {
 function pickPlanet(planets) {
     let selection = Math.floor((Math.random() * planets.length) + 1);
 
-    return planets[selection]
+    return planets[selection];
     
 }
 
