@@ -19,8 +19,9 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
 //Checks that values input are not empty and are or are not a number.
 function validateInput(testInput) {
+    let input;
     if (typeof testInput === 'string'){
-        let input = testInput.trim();
+        input = testInput.trim();
     };
     let numberInput = Number(testInput)
     if (input === ""){
